@@ -1,31 +1,5 @@
-# 1. Команда "hello", тут можна обійтись поки без функції та використати звичайний print:
-
-# Введення: "hello"
-# Вивід: "How can I help you?"
-# 2. Команда "add [ім'я] [номер телефону]". Для цієї команди зробимо функцію add_contact:
-
-# Введення: "add John 1234567890"
-# Вивід: "Contact added."
-# 3. Команда "change [ім'я] [новий номер телефону]". Для цієї команди зробимо функцію change_contact:
-
-# Введення: "change John 0987654321"
-# Вивід: "Contact updated." або повідомлення про помилку, якщо ім'я не знайдено
-# 4. Команда "phone [ім'я]". Для цієї команди зробимо функцію show_phone:
-
-# Введення: "phone John"
-# Вивід: [номер телефону] або повідомлення про помилку, якщо ім'я не знайдено
-# 5. Команда "all". Для цієї команди зробимо функцію show_all:
-
-# Введення: "all"
-# Вивід: усі збережені контакти з номерами телефонів
-# 6. Команда "close" або "exit". Оскільки тут треба перервати виконання програми, можна поки обійтись без функції для цих команд:
-
-# Введення: будь-яке з цих слів
-# Вивід: "Good bye!" та завершення роботи бота
-
-
 def parse_input(user_input):
-    cmd, *args = user_input.split()
+    cmd, *args = user_input.split(' ')
     cmd = cmd.strip().lower()
     return cmd, *args
 
@@ -39,9 +13,12 @@ def change_contact(args, contacts):
     contacts[name] = phone
     return "Contact updated."
 
-def show_phone(arg, contacts):
-    result = contacts[arg]
+def show_phone(args, contacts):
+    result = contacts[args[0]]
     return result
+
+def show_all(args, contacts):
+    return contacts
 
 def main():
     contacts = {}
@@ -57,10 +34,12 @@ def main():
             print("How can I help you?")
         elif command == "add":
             print(add_contact(args, contacts))
-        elif command == 'change':
+        elif command == "change":
             print(change_contact(args, contacts))
         elif command == "phone":
             print(show_phone(args, contacts))
+        elif command == "all":
+            print(show_all(args, contacts))
         else:
             print("Invalid command.")
 
