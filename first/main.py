@@ -29,7 +29,7 @@ def total_salary(path):
         print(answer)
         return False, False
 
-p = Path("C:\\Users\\kasht\\OneDrive\\Documents\\GitHub\\python_modul4_hw\\first\\data.txt")
+relative_path = Path("first\\data.txt")
 
-result = total_salary(p)
+result = total_salary(relative_path)
 print(f'total: {result[0]}, average: {result[1]}')

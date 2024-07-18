@@ -18,6 +18,6 @@ def get_cats_info(path):
         answer = 'path is not correct'
         return answer
 
-p = Path("C:\\Users\\kasht\\OneDrive\\Documents\\GitHub\\python_modul4_hw\\second\\data.txt")
+p = Path("second\\data.txt")
 result = get_cats_info(p)
 print(result)
